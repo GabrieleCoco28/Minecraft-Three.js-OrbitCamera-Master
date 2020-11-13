@@ -1,0 +1,149 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'MinecraftiaRegular';
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    overflow: auto;
+    position: absolute;
+    background: url("Assets/favicon.png") lightblue;
+    background-repeat: no-repeat;
+    background-position: 50% -25%;
+    background-size: 30%;
+}
+#ui {
+    position: absolute;
+    display: none;
+    left: 10px;
+    top: 10px;
+    background-color: #d7d7d7;
+    background-image: linear-gradient(147deg, #d7d7d7 0%, #353535 74%);
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    padding: 5px;
+}
+#ui input[type=radio] {
+    width: 0;
+    height: 0;
+    display: none;
+}
+#ui input[type=radio] + label {
+    background-image: url('Assets/flourish-cc-by-nc-sa.png');
+    background-size: 3200% 800%;
+    image-rendering: pixelated;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+}
+#ui input[type=radio]:checked + label {
+    outline: 3px solid green;
+}
+#saveScene {
+    display: none;
+    position: absolute;
+    left: 1100px;
+    top:10px;
+    width: 12%;
+    height: 8%;
+    padding: 0;
+    margin: 0;
+}
+#logo {
+    position: relative;
+    z-index: 10;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 70%;
+}
+#preferences {
+    z-index: 2;
+    position: relative;
+    text-align: center;
+    left: 0%;
+    top: 10%;
+    color: black;
+    font-size: 10px;
+}
+#loader {
+    position: absolute;
+    display: none;
+    left: 50%;
+    top: 50%;
+    z-index: 11;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid white;
+    border-radius: 50%;
+    border-top: 16px solid green;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+} 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+button{
+    outline:0; 
+    font-size:1em;
+    font-weight:600;
+    background:#fff;
+    border:none;
+    padding:2em 4em;
+    transition:all .3s ease-out; 
+    box-shadow:inset 0 -8px 0 0 rgba(0,0,0,.2),
+        1px 1px 0 0 green,
+        2px 2px 0 0 green,
+        3px 3px 0 0 green,
+        4px 4px 0 0 green,
+        5px 5px 0 0 green,
+        6px 6px 0 0 green,
+        7px 7px 0 0 green,
+        8px 8px 0 0 green,
+        9px 9px 0 0 green,
+        10px 10px 0 0 green,
+        11px 11px 0 0 green,
+        12px 12px 0 0 green;
+}
+button:hover{
+    color:#444;
+}
+button:active{
+    color:#222;
+    box-shadow:inset 0 -4px 0 0 rgba(0,0,0,.2),
+    1px 1px 0 0 green,
+    2px 2px 0 0 green,
+    3px 3px 0 0 green,
+    4px 4px 0 0 green,
+    5px 5px 0 0 green;
+}
+
+@media (max-width: 600px), (max-height: 600px) {
+    #ui input[type=radio] + label {
+        width: 16px;
+        height: 16px;
+    }
+    #saveScene {
+        font-family: "MinecraftiaRegular";
+        display: none;
+        position: absolute;
+        left: 300px;
+        top: 2px;
+        width: 8%;
+        height: 4%;
+        font-size: xx-small;
+    }
+    body {
+        background-position: 50% 10%;
+        background-size: 70%;
+        font-size: small;
+    }
+}

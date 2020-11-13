@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="author" content="Gabriele Coco">
+    <meta name="description" content="Free and Open source Minecraft clone in Three.js">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, JavaScript,Minecraft,clone,minecraft-clone,minecraft,Clone,minceraft-clon,noise,perlin,procedural,terrain,Gabriele,gabriele,pio,Pio,coco,Coco,28">
+    <title>minecraft-clone</title>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/minecraftia" type="text/css"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Assets/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <button id="saveScene">Save GLB</button>
+    <img src="Assets/logo.png" id="logo">
+    <div id="preferences">
+        <h2>Insert the chunk size: <br></h2>
+        <input type="number" id="chunkSize" min="16" max="256" step="1" value="64"><br />
+
+        <h2>Insert the amplitude: <br></h2>
+        <input type="number" id="amplitude" min="16" max="256" step="1" value="60"><br />
+
+        <h2>Insert the frequence: <br></h2>
+        <input type="number" id="frequence" min="16" max="256" step="1" value="90"><br />
+
+        <h2>What world generation do you want?<br></h2>
+        <input type="radio" name = "generation" id="normal" value="normal">normal<br>
+        <input type="radio" name = "generation" id="flat" value="flat">flat<br>
+
+        <input type="checkbox"  id="clouds" >Clouds<br>
+        <input type="checkbox"  id="trees" >Trees<br>
+        <input type="checkbox"  id="shadows" >Shadows<br>
+        <input type="checkbox" id="antialiasingCheck">Antialiasing<br>
+        <input type="checkbox" id="advancedWater">Advanced water<br>
+
+        <p>Choose the shadow quality:</p>
+        <select id="shadowQuality">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="basic">Basic</option>
+        </select><br>
+        <p>Choose a custom texture or leave it default:</p>
+        <input type="file"id="texture"accept="image/png, image/jpeg"><br>
+
+        <button id="generate">Generate World!</button>
+    </div>
+    <div id="loader"></div>
+    <div id="ui">
+        <div class="tiles">
+          <input type="radio" name="voxel" id="voxel1" value="1"><label for="voxel1" style="background-position:   -0% -0%"></label>
+          <input type="radio" name="voxel" id="voxel2" value="2"><label for="voxel2" style="background-position: -100% -0%"></label>
+          <input type="radio" name="voxel" id="voxel3" value="3"><label for="voxel3" style="background-position: -200% -0%"></label>
+          <input type="radio" name="voxel" id="voxel4" value="4"><label for="voxel4" style="background-position: -300% -0%"></label>
+          <input type="radio" name="voxel" id="voxel5" value="5"><label for="voxel5" style="background-position: -400% -0%"></label>
+          <input type="radio" name="voxel" id="voxel6" value="6"><label for="voxel6" style="background-position: -500% -0%"></label>
+          <input type="radio" name="voxel" id="voxel7" value="7"><label for="voxel7" style="background-position: -600% -0%"></label>
+          <input type="radio" name="voxel" id="voxel8" value="8"><label for="voxel8" style="background-position: -700% -0%"></label>
+        </div>
+        <div class="tiles">
+          <input type="radio" name="voxel" id="voxel9"  value="9" ><label for="voxel9"  style="background-position:  -800% -0%"></label>
+          <input type="radio" name="voxel" id="voxel10" value="10"><label for="voxel10" style="background-position:  -900% -0%"></label>
+          <input type="radio" name="voxel" id="voxel11" value="11"><label for="voxel11" style="background-position: -1000% -0%"></label>
+          <input type="radio" name="voxel" id="voxel12" value="12"><label for="voxel12" style="background-position: -1100% -0%"></label>
+          <input type="radio" name="voxel" id="voxel13" value="13"><label for="voxel13" style="background-position: -1200% -0%"></label>
+          <input type="radio" name="voxel" id="voxel14" value="14"><label for="voxel14" style="background-position: -1300% -0%"></label>
+          <input type="radio" name="voxel" id="voxel15" value="15"><label for="voxel15" style="background-position: -1400% -0%"></label>
+          <input type="radio" name="voxel" id="voxel16" value="16"><label for="voxel16" style="background-position: -1500% -0%"></label>
+        </div>
+        <div class="tiles">
+            <input type="radio" name="voxel" id="voxel17"  value="17" ><label for="voxel17"  style="background-position:  -1600% -0%"></label>
+            <input type="radio" name="voxel" id="voxel18" value="18"><label for="voxel18" style="background-position:  -1700% -0%"></label>
+            <input type="radio" name="voxel" id="voxel19" value="19"><label for="voxel19" style="background-position: -1800% -0%"></label>
+            <input type="radio" name="voxel" id="voxel20" value="20"><label for="voxel20" style="background-position: -1900% -0%"></label>
+            <input type="radio" name="voxel" id="voxel21" value="21"><label for="voxel21" style="background-position: -2000% -0%"></label>
+            <input type="radio" name="voxel" id="voxel22" value="22"><label for="voxel22" style="background-position: -2100% -0%"></label>
+            <input type="radio" name="voxel" id="voxel23" value="23"><label for="voxel23" style="background-position: -2200% -0%"></label>
+            <input type="radio" name="voxel" id="voxel24" value="24"><label for="voxel24" style="background-position: -2300% -0%"></label>
+        </div>
+        <div class="tiles">
+            <input type="radio" name="voxel" id="voxel25"  value="25" ><label for="voxel25"  style="background-position:  -2400% -0%"></label>
+            <input type="radio" name="voxel" id="voxel26" value="26"><label for="voxel26" style="background-position:  -2500% -0%"></label>
+            <input type="radio" name="voxel" id="voxel27" value="27"><label for="voxel27" style="background-position: -2600% -0%"></label>
+            <input type="radio" name="voxel" id="voxel28" value="28"><label for="voxel28" style="background-position: -2700% -0%"></label>
+            <input type="radio" name="voxel" id="voxel29" value="29"><label for="voxel29" style="background-position: -2800% -0%"></label>
+            <input type="radio" name="voxel" id="voxel30" value="30"><label for="voxel30" style="background-position: -2900% -0%"></label>
+            <input type="radio" name="voxel" id="voxel31" value="31"><label for="voxel31" style="background-position: -3000% -0%"></label>
+            <input type="radio" name="voxel" id="voxel32" value="32"><label for="voxel32" style="background-position: -3100% -0%"></label>
+        </div>
+    </div>
+    <script src="/noisejs-master/perlin.js"></script>
+    <script src="/script.js" type="module"></script>
+</body>
+</html>
