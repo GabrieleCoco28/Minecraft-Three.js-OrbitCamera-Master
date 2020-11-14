@@ -81,8 +81,7 @@ var preferences = document.getElementById("preferences");
 var saveScene = document.getElementById("saveScene");
 var ui = document.getElementById("ui");
 var logo = document.getElementById("logo")
-var customtexture = document.getElementById("texture")
-
+var customTexture = document.getElementById("texture")
 
 normal.checked = true
 cloudsCheck.checked = true
@@ -200,13 +199,15 @@ function main() {
   const tileTextureWidth = 512;
   const tileTextureHeight = 128;
   const loader = new THREE.TextureLoader();
-  var customtextureToString = String(customtexture.value)
-  if (customtexture.value) {
-    var texture = loader.load(customtextureToString, render);
+
+  if (customTexture.value) {
+    var texture = loader.load(URL.createObjectURL(customTexture.files[0]), render);
+    for(let i = 0; i < 32; i++) {
+      document.querySelectorAll("#ui input[type=radio] + label")[i].style.backgroundImage = `url(${URL.createObjectURL(customTexture.files[0])})`
+    }
   }else {
     var texture = loader.load('/Assets/flourish-cc-by-nc-sa.png', render);
   }
-  console.log(customtextureToString)
   texture.magFilter = THREE.NearestFilter;
   texture.minFilter = THREE.NearestFilter;
 
