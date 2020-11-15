@@ -82,6 +82,7 @@ var saveScene = document.getElementById("saveScene");
 var ui = document.getElementById("ui");
 var logo = document.getElementById("logo")
 var customTexture = document.getElementById("texture")
+var downladTexture = document.getElementById("downloadTexture")
 
 normal.checked = true
 cloudsCheck.checked = true
@@ -89,6 +90,20 @@ treesCheck.checked = true
 shadowCheck.checked = true
 antialiasingCheck.checked = true
 advancedWater.checked = true
+
+function download(filename) {
+  var link = document.createElement('a');
+  link.href = './Assets/flourish-cc-by-nc-sa.png';
+  link.download = 'flourish-cc-by-nc-sa.png';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+downladTexture.onclick = function() {
+  download("./Assets/flourish-cc-by-nc-sa.png")
+}
+
 
 createWorldButton.onclick = function(){
   if(flat.checked || normal.checked) {
@@ -144,7 +159,7 @@ function main() {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.update();
 
-  const scene = new THREE.Scene();
+  var scene = new THREE.Scene();
   scene.background = new THREE.Color('lightblue');
   scene.fog = new THREE.Fog("lightgrey", 1,cellSize * 5);
 
@@ -223,6 +238,19 @@ function main() {
 
   var generation = new generateWorld()
   generation.generate(normal,flat,treesCheck,cloudsCheck,amp,freq,cellSize,world,scene,water,badWater,loading)
+
+  function downloadJson(sceneJSON) {
+    var dataStr = "data:text/json;charset=utf-8," + 
+    encodeURIComponent(JSON.stringify(sceneJSON));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", "world.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }  
+  const sceneJSON = scene.toJSON();
+  downloadJson(sceneJSON)
 
   const material = new THREE.MeshPhongMaterial({
     map: texture,
