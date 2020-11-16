@@ -159,9 +159,9 @@ function main() {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.update();
 
-  var scene = new THREE.Scene();
+  var scene = new THREE.Scene()
   scene.background = new THREE.Color('lightblue');
-  scene.fog = new THREE.Fog("lightgrey", 1,cellSize * 5);
+  scene.fog = new THREE.Fog("lightblue", 1,cellSize * 2);
 
   const waterGeometry = new THREE.PlaneBufferGeometry( cellSize, cellSize );
 	var water = new Water(
@@ -238,19 +238,6 @@ function main() {
 
   var generation = new generateWorld()
   generation.generate(normal,flat,treesCheck,cloudsCheck,amp,freq,cellSize,world,scene,water,badWater,loading)
-
-  function downloadJson(sceneJSON) {
-    var dataStr = "data:text/json;charset=utf-8," + 
-    encodeURIComponent(JSON.stringify(sceneJSON));
-    var downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href",     dataStr);
-    downloadAnchorNode.setAttribute("download", "world.json");
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-  }  
-  const sceneJSON = scene.toJSON();
-  downloadJson(sceneJSON)
 
   const material = new THREE.MeshPhongMaterial({
     map: texture,

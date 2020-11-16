@@ -218,6 +218,6 @@ class generateWorld {
           light.shadow.mapSize.height = 2048 * 2.5;
           light.shadow.camera.near = 0.1;
           light.shadow.camera.far = cellSize* cellSize;
-    }
+  }
 }
 export {generateWorld}
