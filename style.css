@@ -91,7 +91,6 @@ body {
 #front {
     height: 100px;
     width: 100px;
-    background-image: url("./Assets/loaderTexture/side.jpg");
     background-size: 100%;
     transform: translateZ(-50px);
     position: relative;
@@ -101,14 +100,12 @@ body {
     width: 100px;
     background-color: orange;
     transform: translateZ(50px) translateX(0px) translateY(-100px);
-    background-image: url("./Assets/loaderTexture/side.jpg");
     background-size: 100%;
     position: relative;
 }
 #top {
     height: 100px;
     width: 100px;
-    background-image: url("./Assets/loaderTexture/bottom.jpg");
     background-size: 100%;
     position: relative;
     transform: rotateX(90deg) translateZ(150px);
@@ -116,7 +113,6 @@ body {
 #bottom {
     height: 100px;
     width: 100px;
-    background-image: url("./Assets/loaderTexture/top.png");
     background-size: 100%;
     position: relative;
     transform: rotateX(90deg) translateZ(350px);
@@ -127,7 +123,6 @@ body {
     background-color: blue;
     position: relative;
     transform: rotateY(90deg) translateY(-400px) translateZ(50px);
-    background-image: url("./Assets/loaderTexture/side.jpg");
     background-size: 100%;
 }
 #left {
@@ -136,7 +131,6 @@ body {
     background-color: green;
     position: relative;
     transform: rotateY(90deg) translateY(-500px) translateZ(-50px);
-    background-image: url("./Assets/loaderTexture/side.jpg");
     background-size: 100%;
 }
 @-webkit-keyframes spin {
