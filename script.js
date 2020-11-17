@@ -4,6 +4,7 @@ import { Water } from './ImposrtFiles/Water.js';
 import { VoxelWorld } from './classesScripts/voxelWorld.js'
 import { generateWorld } from './classesScripts/generateWorld.js'
 import { _3Dfile } from './classesScripts/saveScene.js'
+import { playSound } from './classesScripts/audio.js'
 VoxelWorld.faces = [
   { // left
     uvRow: 0,
@@ -364,10 +365,11 @@ function main() {
 
     const intersection = world.intersectRay(start, end);
     if (intersection) {
-      const voxelId = event.shiftKey ? 0 : currentVoxel;
+      const voxelId = event.button == 2 ? 0 : currentVoxel;
       const pos = intersection.position.map((v, ndx) => {
         return v + intersection.normal[ndx] * (voxelId > 0 ? 0.5 : -0.5);
       });
+      new playSound(voxelId,camera)
       world.setVoxel(...pos, voxelId);
       updateVoxelGeometry(...pos);
     }
