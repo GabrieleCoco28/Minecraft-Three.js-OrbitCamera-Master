@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "MinecraftiaRegular";
+    src: url("https://yoursite.com/css/fonts/CustomFont.eot");
+    src: url("./Font/Minecraftia-Regular.ttf") format("truetype");
+}
 * {
     padding: 0;
     margin: 0;
@@ -68,28 +73,88 @@ body {
 }
 #loader {
     position: absolute;
-    display: none;
+    transform-style: preserve-3d;
+    display: block;
     left: 50%;
     top: 50%;
     z-index: 11;
     width: 150px;
     height: 150px;
     margin: -75px 0 0 -75px;
-    border: 16px solid white;
+    border: 16px solid rgba(0,0,0,0);
     border-radius: 50%;
-    border-top: 16px solid green;
+    border-top: 16px solid rgba(0,0,0,0);
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    animation: spin 20s linear infinite;
+}
+#front {
+    height: 100px;
+    width: 100px;
+    background-image: url("./Assets/loaderTexture/side.jpg");
+    background-size: 100%;
+    transform: translateZ(-50px);
+    position: relative;
+}
+#back {
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+    transform: translateZ(50px) translateX(0px) translateY(-100px);
+    background-image: url("./Assets/loaderTexture/side.jpg");
+    background-size: 100%;
+    position: relative;
+}
+#top {
+    height: 100px;
+    width: 100px;
+    background-image: url("./Assets/loaderTexture/bottom.jpg");
+    background-size: 100%;
+    position: relative;
+    transform: rotateX(90deg) translateZ(150px);
+}
+#bottom {
+    height: 100px;
+    width: 100px;
+    background-image: url("./Assets/loaderTexture/top.png");
+    background-size: 100%;
+    position: relative;
+    transform: rotateX(90deg) translateZ(350px);
+}
+#right {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    position: relative;
+    transform: rotateY(90deg) translateY(-400px) translateZ(50px);
+    background-image: url("./Assets/loaderTexture/side.jpg");
+    background-size: 100%;
+}
+#left {
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    position: relative;
+    transform: rotateY(90deg) translateY(-500px) translateZ(-50px);
+    background-image: url("./Assets/loaderTexture/side.jpg");
+    background-size: 100%;
 }
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    from {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
 } 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    from {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
 }
 button{
     outline:0; 
@@ -146,4 +211,72 @@ button:active{
         background-size: 70%;
         font-size: small;
     }
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+ }
+
+.settingsDiv {
+    display: table;
+  }
+  .settingRow {
+    display: table-row;
+  }
+  .label {
+    display: table-cell;
+    padding-right: 1em;
+}
+
+.checkbox-grid li {
+    display: block;
+    float: left;
+    width: 100%;
+}
+.checkbox-grid label {
+    margin: 1%;
+    font-size: small;
+}
+.checkbox-grid input {
+    left: 10%;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: medium;
+    color: black;
+    display: inline-block;
+    border: black;
+    text-decoration: underline;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    color: blue;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
 }

@@ -14,10 +14,21 @@ class generateWorld {
                   var height = height1 + height2
                   if(height <= 3) {
                     world.setVoxel(x, height + 30, z, 3);
-                  }else {
+                  }else if(height > 3 && height <= 50){
                     world.setVoxel(x, height + 30, z, 14);
+                  }else if(height > 60 && height <= 75){
+                    world.setVoxel(x, height + 30, z, 5);
+                  }else {
+                    world.setVoxel(x, height + 30, z, 13);
                   }
-                  world.setVoxel(x, height + 29, z, 7);
+
+                  if(height > 60 && height <= 75) {
+                    world.setVoxel(x, height + 29, z, 5);
+                  }else if(height > 75){
+                    world.setVoxel(x, height + 29, z, 13);
+                  }else {
+                    world.setVoxel(x, height + 29, z, 7)
+                  }
                   world.setVoxel(x, height + 28, z, 7);
                   world.setVoxel(x, height + 27, z, 7);
                   world.setVoxel(x, height + 26, z, 7);
@@ -72,7 +83,7 @@ class generateWorld {
             for(let i = 0; i < coordinates.length; i++) {
               var randNum = randInt(1,1000)
               var treeType = randInt(0,10)
-              if(randNum == 20 && coordinates[i].y > 35) {
+              if(randNum == 20 && coordinates[i].y > 35 && coordinates[i].y < 58) {
                 if(treeType == 1) {
                   //tronco
                   world.setVoxel(coordinates[i].x, coordinates[i].y + 5, coordinates[i].z,10)
@@ -186,7 +197,7 @@ class generateWorld {
           }
           if(cloudsCheck.checked == true) {
             for(let i = 0; i < Math.random() * cellSize / 5; i++) {
-              const cloudG = new THREE.BoxGeometry(Math.random() * cellSize / 2 ,4,Math.random() * cellSize / 2);
+              const cloudG = new THREE.BoxGeometry(Math.random() * cellSize ,4,Math.random() * cellSize);
               const cloudM = new THREE.MeshBasicMaterial({color:"white"})
               const cloud = new THREE.Mesh(cloudG,cloudM)
               //cloud.castShadow = true; 

@@ -4,7 +4,6 @@ import { Water } from './ImposrtFiles/Water.js';
 import { VoxelWorld } from './classesScripts/voxelWorld.js'
 import { generateWorld } from './classesScripts/generateWorld.js'
 import { _3Dfile } from './classesScripts/saveScene.js'
-
 VoxelWorld.faces = [
   { // left
     uvRow: 0,
@@ -157,11 +156,19 @@ function main() {
   camera.position.set(cellSize / 2, cellSize / 2, cellSize / 2);
 
   const controls = new OrbitControls(camera, renderer.domElement);
+  controls.rotateSpeed = .3
+  controls.zoomSpeed = .3
+  controls.keys = {
+    LEFT: 65, 
+    UP: 87,
+    RIGHT: 68, 
+    BOTTOM: 83
+  }
   controls.update();
 
   var scene = new THREE.Scene()
   scene.background = new THREE.Color('lightblue');
-  scene.fog = new THREE.Fog("lightblue", 1,cellSize * 2);
+  scene.fog = new THREE.Fog("lightblue", 1,cellSize * 5);
 
   const waterGeometry = new THREE.PlaneBufferGeometry( cellSize, cellSize );
 	var water = new Water(
@@ -173,13 +180,15 @@ function main() {
 				  		texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 				  	} ),
             alpha: 1.0,
+            opacity: .1,
 				  	sunDirection: new THREE.Vector3(),
 				  	sunColor: 0xffffff,
 				  	waterColor: 0x001e0f,
 				  	distortionScale: 1,
-				  	fog: scene.fog !== undefined
+            fog: scene.fog !== undefined,
 				  }
   );
+
   water.rotation.x = - Math.PI / 2;
   water.position.set(
     cellSize/2,
@@ -200,7 +209,7 @@ function main() {
 
   
   document.addEventListener("keypress",(e) => {
-    if(e.key == "s") {
+    if(e.key == "p") {
       new _3Dfile( scene );
     }
   })
