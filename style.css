@@ -74,7 +74,7 @@ body {
 #loader {
     position: absolute;
     transform-style: preserve-3d;
-    display: block;
+    display: none;
     left: 50%;
     top: 50%;
     z-index: 11;
