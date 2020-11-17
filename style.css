@@ -87,7 +87,7 @@ body {
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
-    animation: spin 20s linear infinite;
+    animation: spin 10s linear infinite;
 }
 #front {
     height: 100px;
