@@ -57,6 +57,17 @@
                 <p style="font-size: medium; margin: 2%;">Custom textures (optional):</p>
                 <input type="file" name="file" id="texture" accept="image/png, image/jpeg"class="inputfile" data-multiple-caption="{count} files selected" multiple />
                 <label for="texture" id="fileName">Choose a file...</label> <br>
+                <p style="font-size: medium; margin: 2%;">Choose the texture size:</p>
+                <select id="textureQuality">
+                    <option value="16">16</option>
+                    <option value="32">32</option>
+                    <option value="64">64</option>
+                    <option value="128">128</option>
+                    <option value="256">256</option>
+                    <option value="512">512</option>
+                    <option value="1024">1024</option>
+                    <option value="2048">2048</option>
+                </select><br>
 
 
                 <input type="button" id="downloadTexture" value="Download default texture" style="padding: 1%; margin:2%"><br>

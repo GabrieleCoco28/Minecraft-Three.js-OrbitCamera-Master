@@ -84,6 +84,7 @@ var logo = document.getElementById("logo")
 var customTexture = document.getElementById("texture")
 var downladTexture = document.getElementById("downloadTexture")
 var aduioCheck = document.getElementById("aduioCheck");
+var textureQuality = document.getElementById("textureQuality")
 
 normal.checked = true
 cloudsCheck.checked = true
@@ -222,9 +223,45 @@ function main() {
 
   var amp =  Number(document.getElementById("amplitude").value);
   var freq =  Number(document.getElementById("frequence").value);
-  const tileSize = 16;
-  const tileTextureWidth = 512;
-  const tileTextureHeight = 128;
+
+  var tileSize;
+  var tileTextureWidth;
+  var tileTextureHeight;
+
+  if(textureQuality.value == 16) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512;
+    tileTextureHeight = 128;
+  }else if(textureQuality.value == 32) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 2;
+    tileTextureHeight = 128 * 2;
+  }else if(textureQuality.value == 64) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 4;
+    tileTextureHeight = 128 * 4;
+  }else if(textureQuality.value == 128) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 8;
+    tileTextureHeight = 128 * 8;
+  }else if(textureQuality.value == 256) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 16;
+    tileTextureHeight = 128 * 16;
+  }else if(textureQuality.value == 512) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 32;
+    tileTextureHeight = 128 * 32;
+  }else if(textureQuality.value == 1024) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 64;
+    tileTextureHeight = 128 * 64;
+  }else if(textureQuality.value == 2048) {
+    tileSize = textureQuality.value;
+    tileTextureWidth = 512 * 128;
+    tileTextureHeight = 128 * 128;
+  }
+
   const loader = new THREE.TextureLoader();
 
   if (customTexture.value) {
@@ -233,8 +270,8 @@ function main() {
       document.querySelectorAll("#ui input[type=radio] + label")[i].style.backgroundImage = `url(${URL.createObjectURL(customTexture.files[0])})`
     }
   }else {
-    var texture = loader.load('/Assets/flourish-cc-by-nc-sa.png', render);
-  }
+    var texture = loader.load('/Assets/flourish-cc-by-nc-sa.png', render)
+  } 
   texture.magFilter = THREE.NearestFilter;
   texture.minFilter = THREE.NearestFilter;
 
