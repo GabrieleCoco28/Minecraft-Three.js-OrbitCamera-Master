@@ -18,7 +18,7 @@ var cobblestone = [
     "./Assets/loaderTexture/cobblestone.png"
 ]
 
-var randomInt = Math.floor(Math.random() * 4)
+var randomInt = Math.round(Math.random() * 3)
 if(randomInt == 0) {
     document.getElementById("bottom").style.backgroundImage = `url(${grass[0]})`
     bottom.style.backgroundImage = `url(${grass[1]})`
