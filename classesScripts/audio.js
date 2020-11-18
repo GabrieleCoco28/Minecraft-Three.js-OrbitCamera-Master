@@ -2,7 +2,6 @@ import * as THREE from '../ImposrtFiles/three.module.js'
 
 class playSound {
     constructor(voxelId,camera) {
-        console.log("played")
         const listener = new THREE.AudioListener();
         camera.add( listener );
 

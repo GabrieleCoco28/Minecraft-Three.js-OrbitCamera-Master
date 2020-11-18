@@ -83,6 +83,7 @@ var ui = document.getElementById("ui");
 var logo = document.getElementById("logo")
 var customTexture = document.getElementById("texture")
 var downladTexture = document.getElementById("downloadTexture")
+var aduioCheck = document.getElementById("aduioCheck");
 
 normal.checked = true
 cloudsCheck.checked = true
@@ -90,6 +91,7 @@ treesCheck.checked = true
 shadowCheck.checked = true
 antialiasingCheck.checked = true
 advancedWater.checked = true
+aduioCheck.checked = true
 
 function download(filename) {
   var link = document.createElement('a');
@@ -115,7 +117,7 @@ createWorldButton.onclick = function(){
 }
 function main() { 
   saveScene.style.display = "block";
-  ui.style.display = "block";  7
+  ui.style.display = "block";
   document.body.style.overflow = "hidden";
   logo.style.display = "none";
 
@@ -369,7 +371,9 @@ function main() {
       const pos = intersection.position.map((v, ndx) => {
         return v + intersection.normal[ndx] * (voxelId > 0 ? 0.5 : -0.5);
       });
-      new playSound(voxelId,camera)
+      if(aduioCheck.checked) {
+        new playSound(voxelId,camera)
+      }
       world.setVoxel(...pos, voxelId);
       updateVoxelGeometry(...pos);
     }
