@@ -85,6 +85,7 @@ var customTexture = document.getElementById("texture")
 var downladTexture = document.getElementById("downloadTexture")
 var aduioCheck = document.getElementById("aduioCheck");
 var textureQuality = document.getElementById("textureQuality")
+var biome = document.getElementById("biome")
 
 normal.checked = true
 cloudsCheck.checked = true
@@ -286,7 +287,7 @@ function main() {
   });
 
   var generation = new generateWorld()
-  generation.generate(normal,flat,treesCheck,cloudsCheck,amp,freq,cellSize,world,scene,water,badWater,loading)
+  generation.generate(normal,flat,treesCheck,cloudsCheck,amp,freq,cellSize,world,scene,water,badWater,loading,biome)
 
   const material = new THREE.MeshPhongMaterial({
     map: texture,
